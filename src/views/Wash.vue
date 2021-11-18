@@ -1,47 +1,43 @@
 <template>
   <div class="home">
-    <button class="list" @click="showList()">
-      <img src="../assets/icons/list.svg" alt="list">
-    </button>
+    <nav-list/>
     <button class="to-me" @click="showPosition()">
       <img src="../assets/icons/toMe.svg" alt="toMe">
     </button>
-
-    <mark/>
+    <marker-point v-for="(mark, key) in markers"
+                  :key="key"
+                  :mark="mark"
+                  :style="'top: ' + mark.y + 'px; left: ' + mark.x + 'px'"
+    />
     <panel/>
-
-<!--    <div class="marker" v-for="(mark, key) in markers" :key="key">-->
-<!--      <img src="../assets/icons/marker.svg" alt="marker" class="point">-->
-<!--      <img :src="'../assets/images/' + mark.skin" alt="logo" class="skin"/>-->
-<!--      <span class="counter">{{mark.count}}</span>-->
-<!--    </div>-->
   </div>
 </template>
 
 <script>
 import Panel from '../components/Panel.vue';
 import Marker from "../components/Marker.vue";
+import Nav from '../components/Nav'
 
 export default {
   name: 'Wash',
   components: {
     Panel,
-    mark: Marker,
+    markerPoint: Marker,
+    navList: Nav,
   },
   data() {
     return {
       markers: [
-        {skin:"tnk.png", count: 5},
-        // {skin:"klo.jpg", count: 2},
+        {skin:"tnk.png", count: 5, x:150, y:205},
+        {skin:"wog.jpg", count: 2, x:120, y:300},
+        {skin:"klo.jpg", count: 0, x:220, y:500},
+        {skin:"irbis.jpg", count: 1, x:100, y:50},
       ]
     }
   },
   methods: {
-    showList() {
-      console.log("List");
-    },
     showPosition() {
-      console.log("you are here");
+      alert("you are here");
     }
   }
 }
@@ -58,26 +54,11 @@ export default {
     background-repeat: no-repeat;
     -webkit-background-size: cover;
     background-size: cover;
-    .list {
-      position: fixed;
-      top: 30px;
-      left: 30px;
-      box-sizing: border-box;
-      width: 55px;
-      height: 55px;
-      padding: 15px 14px;
-      border: none;
-      box-shadow: 0 5px 10px -5px grey;
-      border-radius: 50%;
-      background-color: #F6F8F7;
-      img {
-        width: 100%;
-      }
-    }
     .to-me {
       position: fixed;
       bottom: 120px;
       right: 20px;
+      z-index: 10;
       box-sizing: border-box;
       width: 45px;
       height: 45px;
@@ -85,33 +66,6 @@ export default {
       border-radius: 50%;
       background-color: #F6F8F7;
       box-shadow: 0 5px 10px -5px grey;
-
     }
   }
-
-  //.marker {
-  //  position: absolute;
-  //  top: 5%;
-  //  left: 50%;
-  //  width: 48px;
-  //  .point {
-  //    width: 100%;
-  //    height: 100%;
-  //  }
-  //  .logo {
-  //    position: absolute;
-  //    top: -10px;
-  //    left: -10px;
-  //  }
-  //  .counter {
-  //    display: block;
-  //    box-sizing: border-box;
-  //    width: 15px;
-  //    height: 15px;
-  //    border-radius: 50%;
-  //    background-color: green;
-  //    color: #fff;
-  //    font-size: 10px;
-  //  }
-  //}
 </style>

@@ -10,11 +10,6 @@ const routes = [
     name: 'Wash',
     component: Wash
   },
-  // {
-  //   path: '/about',
-  //   name: 'About',
-  //   component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  // }
 ]
 
 const router = new VueRouter({

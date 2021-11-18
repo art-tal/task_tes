@@ -1,26 +1,20 @@
 <template>
   <div class="panel">
-  <router-link class="home"
-               to="/"
-               exact
-               active-class="active"
-               tag="button"
-               @click.prevent="goHome()"
-  >
-    <img src="../assets/icons/home.svg" alt="home">
-  </router-link>
-  <button class="gas-station" @click="showStations()">
-    <img src="../assets/icons/fuel.svg" alt="fuel">
-  </button>
-  <button class="qr-code" @click="getQr()">
-    <img src="../assets/icons/qr.svg" alt="qr" class="qr">
-  </button>
-  <button class="marker" @click="showMarker()">
-    <img src="../assets/icons/poiner.svg" alt="pointer">
-  </button>
-  <button class="more" @click="showMore()">
-    <span class="sircle"></span><span class="sircle"></span><span class="sircle"></span>
-  </button>
+    <button class="gas-station" @click="goHome()">
+      <img src="../assets/icons/home.svg" alt="home">
+    </button>
+    <button class="gas-station" @click="showStations()">
+      <img src="../assets/icons/fuel.svg" alt="fuel">
+    </button>
+    <button class="qr-code" @click="getQr()">
+      <img src="../assets/icons/qr.svg" alt="qr" class="qr">
+    </button>
+    <button class="marker" @click="showMarker()">
+      <img src="../assets/icons/poiner.svg" alt="pointer">
+    </button>
+    <button class="more" @click="showMore()">
+      <span class="sircle"></span><span class="sircle"></span><span class="sircle"></span>
+    </button>
   </div>
 </template>
 
@@ -30,28 +24,28 @@ export default {
   methods: {
     goHome() {
       console.log('This is Home');
+      alert('This is Home');
     },
 
     showStations() {
-      console.log('Gas stations');
+      alert('Gas stations');
     },
 
     getQr() {
-      console.log("QR-code");
+      alert("QR-code");
     },
 
     showMore() {
-      console.log("More");
+      alert("More");
     },
 
     showMarker() {
-      console.log("Marker");
+      alert("Marker");
     }
   }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
   .panel {
     box-sizing: border-box;
