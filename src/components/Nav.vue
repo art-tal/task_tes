@@ -1,20 +1,18 @@
 <template>
-  <div>
+  <nav>
     <button class="list" @click.prevent="showList()">
       <img src="../assets/icons/list.svg" alt="list">
     </button>
 
     <ul class="dropdown" v-if="show">
-      <router-link
+      <li
           v-for="item in list"
           :key="item.id"
-          tag="li"
-          :to="item.link"
-          exact
-          @click.stop="alert(item.id)"
-      >{{ item.id }}</router-link>
+          :class="{active: item.isActive}"
+          @click="activeLink(item)"
+      >{{ item.id }}</li>
     </ul>
-  </div>
+  </nav>
 
 </template>
 
@@ -25,17 +23,29 @@ export default {
     return {
       show: false,
       list: [
-        {id: 'Home', link: '/'},
-        {id: 'Buy', link: '/'},
-        {id: 'About', link: '/'},
-        {id: 'Contact', link: '/'}
+        {id: 'Home', link: '/home', isActive: false},
+        {id: 'Buy', link: '/buy', isActive: false},
+        {id: 'About', link: '/about', isActive: false},
+        {id: 'Contact', link: '/contact', isActive: false}
       ]
     }
   },
   methods: {
     showList() {
       this.show = !this.show;
+      console.log(this.show);
     },
+
+    activeLink(link) {
+      this.list.forEach( (item) => {
+        if(item.id === link.id) {
+          item.isActive = true;
+        } else {
+          item.isActive = false;
+        }
+      });
+
+    }
   }
 
 }
@@ -61,8 +71,8 @@ export default {
 }
 .dropdown {
   position: absolute;
-  bottom: -215px;
-  left: 0;
+  top: 100px;
+  left: 30px;
   text-align: left;
   background-color: #d9d9d9;
   li {
