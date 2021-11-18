@@ -6,21 +6,40 @@
     <button class="to-me" @click="showPosition()">
       <img src="../assets/icons/toMe.svg" alt="toMe">
     </button>
-    <panel msg="Welcome to Your Vue.js App"/>
+
+    <mark/>
+    <panel/>
+
+<!--    <div class="marker" v-for="(mark, key) in markers" :key="key">-->
+<!--      <img src="../assets/icons/marker.svg" alt="marker" class="point">-->
+<!--      <img :src="'../assets/images/' + mark.skin" alt="logo" class="skin"/>-->
+<!--      <span class="counter">{{mark.count}}</span>-->
+<!--    </div>-->
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import Panel from '@/components/Panel.vue'
+import Panel from '../components/Panel.vue';
+import Marker from "../components/Marker.vue";
 
 export default {
   name: 'Wash',
   components: {
-    Panel
+    Panel,
+    mark: Marker,
+  },
+  data() {
+    return {
+      markers: [
+        {skin:"tnk.png", count: 5},
+        // {skin:"klo.jpg", count: 2},
+      ]
+    }
   },
   methods: {
-    showList() {},
+    showList() {
+      console.log("List");
+    },
     showPosition() {
       console.log("you are here");
     }
@@ -30,6 +49,7 @@ export default {
 
 <style scoped lang="scss">
   .home {
+    position: relative;
     margin: 0;
     padding: 0;
     width: 100vw;
@@ -68,4 +88,30 @@ export default {
 
     }
   }
+
+  //.marker {
+  //  position: absolute;
+  //  top: 5%;
+  //  left: 50%;
+  //  width: 48px;
+  //  .point {
+  //    width: 100%;
+  //    height: 100%;
+  //  }
+  //  .logo {
+  //    position: absolute;
+  //    top: -10px;
+  //    left: -10px;
+  //  }
+  //  .counter {
+  //    display: block;
+  //    box-sizing: border-box;
+  //    width: 15px;
+  //    height: 15px;
+  //    border-radius: 50%;
+  //    background-color: green;
+  //    color: #fff;
+  //    font-size: 10px;
+  //  }
+  //}
 </style>

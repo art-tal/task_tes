@@ -5,6 +5,7 @@
                exact
                active-class="active"
                tag="button"
+               @click.prevent="goHome()"
   >
     <img src="../assets/icons/home.svg" alt="home">
   </router-link>
@@ -27,6 +28,10 @@
 export default {
   name: 'Panel',
   methods: {
+    goHome() {
+      console.log('This is Home');
+    },
+
     showStations() {
       console.log('Gas stations');
     },
@@ -62,7 +67,7 @@ export default {
     right: 20px;
     padding: 10px;
     background-color: rgba(255, 255, 255, 0.3);
-    box-shadow: 0px 5px 6px -3px grey;
+    box-shadow: 0 5px 6px -3px grey;
     button {
       width: 36px;
       height: 36px;
