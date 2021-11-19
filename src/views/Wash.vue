@@ -66,6 +66,7 @@ export default {
       border-radius: 50%;
       background-color: #F6F8F7;
       box-shadow: 0 5px 10px -5px grey;
+      padding-top: 4px;
     }
   }
 </style>
