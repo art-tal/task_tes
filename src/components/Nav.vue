@@ -1,9 +1,13 @@
 <template>
   <nav>
     <button class="list" @click.prevent="showList()">
-      <img src="../assets/icons/list.svg" alt="list">
+      <transition name="fade">
+        <img src="../assets/icons/close.svg" alt="list" v-if="show">
+        <img src="../assets/icons/list.svg" alt="list" v-else class="img_list">
+      </transition>
     </button>
 
+    <transition name="fade">
     <ul class="dropdown" v-if="show">
       <li
           v-for="item in list"
@@ -12,6 +16,7 @@
           @click="activeLink(item)"
       >{{ item.id }}</li>
     </ul>
+    </transition>
   </nav>
 
 </template>
@@ -67,6 +72,9 @@ export default {
   background-color: #F6F8F7;
   img {
     width: 100%;
+    &.img_list {
+      padding-top: 4px;
+    }
   }
 }
 .dropdown {
@@ -86,5 +94,12 @@ export default {
   .active {
     background-color: #969494;
   }
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 1s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active до версии 2.1.8 */ {
+  opacity: 0;
 }
 </style>
